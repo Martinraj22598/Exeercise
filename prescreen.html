@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Code Challenge</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="author" content="Vineeth">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -14,32 +12,26 @@
 </head>
 
 <body>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title" align="center">Dealertrack Coding Exercise</h3>
-        </div>
-        <div class="panel-body" align="center">
-            <div class="form-group">
-                <label for="name" class="control-label">ENTER ANY STRING IN THE TEXT AREA</label>
-                <div>
-                    <textarea class="prescreen-input" id="txt"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div>
-                    <button type="submit" class="btn btn-primary btn-sm btn-space" onclick="keyValueTotals()">CLICK TO
-                        SEE THE MODIFIED STRING</button>
-                    <button type="submit" class="prescreen-button btn btn-success btn-sm btn-space"
-                        onclick="clearTextarea()">Clear</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="name" class="control-label">RESULT TEXT AREA</label>
-                <div>
-                    <textarea id="prescreen-output"></textarea>
-                </div>
+    <h3 style="text-align: center;">String Value Sum</h3>
+    <div class="panel-body" align="center">
+        <div class="form-group">
+            <label style="color: indigo;" for="name" class="control-label">Count Value</label>
+            <div>
+                <textarea class="prescreen-input" id="keyValPairs" rows="10" cols="50">John:2
+Jane:3
+John:4
+Jane:5</textarea>
             </div>
         </div>
+        <div class="form-group">
+            <div>
+                <button style="color: green;" type="submit" class="btn btn-success btn-sm"
+                    onclick="keyValueTotals()">Count values</button>
+                <button style="color: grey;" type="submit" class="prescreen-button btn btn-default btn-sm"
+                    onclick="clearTextarea()">Clear</button>
+            </div>
+        </div>
+        <section id="prescreen-output"></section>
     </div>
 </body>
 
