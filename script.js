@@ -1,40 +1,32 @@
-// function to clear the input keycount textarea and output 
-function clearTextarea() {
-    document.getElementById("txt").value = '';
-    document.getElementById("prescreen-output").innerHTML = '';
-}
-
 function keyValueTotals() {
-
-    var userInput = document.getElementById("txt").value;
-    // splitting input into an array of strings on each newline character
-    var input = userInput.split(" ");
-
+    var userInput = document.getElementById("keyValPairs").value.toLowerCase();
+    userInput = userInput.replace(/ /g, '');
+    var input = userInput.split("\n");
+    var obj = {};
     for (var i = 0; i < input.length; i++) {
-        var str = input[i].toLowerCase();
-
-        if (/[^a-zA-Z]/.test(input[i])) {
-
-
+        var keyValues = input[i].split(':');
+        if (obj.hasOwnProperty(keyValues[0])) {
+            var value = obj[keyValues[0]];
+            value += parseInt(keyValues[1]);
+            obj[keyValues[0]] = value;
         } else {
-            if (str.length === 1) {
-                input[i] = str;
-            } else if (str.length === 2) {
-                input[i] = str.split('').join('0');
-            } else {
-                var sbstrg = str.substr(1, str.length - 2);
-                var uniq = '';
-                for (var j = 0; j < sbstrg.length; j++) {
-                    if (uniq.indexOf(sbstrg[j]) === -1) {
-                        uniq += sbstrg[j];
-                    }
-                }
-                input[i] = str.replace(sbstrg, uniq.length);
-            }
+            obj[keyValues[0]] = parseInt(keyValues[1]);
         }
     }
     var output = "";
-    output += input.join(" ");
-    // output message
+    $.each(obj, function (key, value) {
+        console.log(key);
+        key = key.toLowerCase().replace(/[^a-z]+/g, '');
+        if (key === key.split('').reverse().join('')) {
+            output += '<p>The total for <span>' + key + '</span>(prescreen-palindrome) is <span>' + value + '</span>.</p>';
+        }
+        else {
+            output += '<p>The total for <span>' + key + '</span> is <span>' + value + '</span>.</p>';
+        }
+    });
     $('#prescreen-output').html(output);
+}
+function clearTextarea() {
+    document.getElementById("keyValPairs").value = '';
+    document.getElementById("prescreen-output").innerHTML = '';
 }
